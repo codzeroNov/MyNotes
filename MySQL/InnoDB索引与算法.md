@@ -45,17 +45,17 @@ B+树的索引可以分为聚集索引（clustered index）和辅助索引（sec
 
 页可以空或者填充满（100%），行记录会按照主键顺序来排列。例如在使用AUTO_INCREMENT时，你会有顺序的ID 1、2、3、4等。
 
-![页分裂与页合并1](D:\DOCS\PICS\页分裂与页合并1.jpg)
+![页分裂与页合并1](https://github.com/codzeroNov/MyNotes/tree/master/MySQL/PICS/页分裂与页合并1.jpg)
 
 页还有另一个重要的属性：MERGE_THRESHOLD。该参数的默认值是50%页的大小，它在InnoDB的合并操作中扮演了很重要的角色。
 
-![页分裂与页合并2](D:\DOCS\PICS\页分裂与页合并2.jpg)
+![页分裂与页合并2](https://github.com/codzeroNov/MyNotes/tree/master/MySQL/PICS/页分裂与页合并2.jpg)
 
 当你插入数据时，如果数据（大小）能够放的进页中的话，那他们是按顺序将页填满的。
 
 若当前页满，则下一行记录会被插入下一页（NEXT）中。
 
-![页分裂与页合并3](D:\DOCS\PICS\页分裂与页合并3.jpg)
+![页分裂与页合并3](https://github.com/codzeroNov/MyNotes/tree/master/MySQL/PICS/页分裂与页合并3.jpg)
 
 根据B树的特性，它可以自顶向下遍历，但也可以在各叶子节点水平遍历。因为每个叶子节点都有着一个指向包含下一条（顺序）记录的页的指针。
 
@@ -67,19 +67,19 @@ B+树的索引可以分为聚集索引（clustered index）和辅助索引（sec
 
 当你删了一行记录时，实际上记录并没有被物理删除，记录被标记（flaged）为删除并且它的空间变得允许被其他记录声明使用。
 
-![页合并1](D:\DOCS\PICS\页合并1.jpg)
+![页合并1](https://github.com/codzeroNov/MyNotes/tree/master/MySQL/PICS/页合并1.jpg)
 
 当页中删除的记录达到MERGE_THRESHOLD（默认页体积的50%），InnoDB会开始寻找最靠近的页（前或后）看看是否可以将两个页合并以优化空间使用。
 
-![页合并2](D:\DOCS\PICS\页合并2.jpg)
+![页合并2](https://github.com/codzeroNov/MyNotes/tree/master/MySQL/PICS/页合并2.jpg)
 
 在示例中，页#6使用了不到一半的空间，页#5又有足够的删除数量，现在同样处于50%使用以下。从InnoDB的角度来看，它们能够进行合并。
 
-![页合并3](D:\DOCS\PICS\页合并3.jpg)
+![页合并3](https://github.com/codzeroNov/MyNotes/tree/master/MySQL/PICS/页合并3.jpg)
 
 合并操作使得页#5保留它之前的数据，并且容纳来自页#6的数据。页#6变成一个空页，可以接纳新数据。
 
-![页合并4](D:\DOCS\PICS\页合并4.jpg)
+![页合并4](https://github.com/codzeroNov/MyNotes/tree/master/MySQL/PICS/页合并4.jpg)
 
 如果我们在UPDATE操作中让页中数据体积达到类似的阈值点，InnoDB也会进行一样的操作。
 
@@ -89,11 +89,11 @@ B+树的索引可以分为聚集索引（clustered index）和辅助索引（sec
 
 前面提到，页可能填充至100%，在页填满了之后，下一页会继续接管新的记录。但如果有下面这种情况呢？
 
-![页分裂1](D:\DOCS\PICS\页分裂1.jpg)
+![页分裂1](https://github.com/codzeroNov/MyNotes/tree/master/MySQL/PICS/页分裂1.jpg)
 
 页#10没有足够空间去容纳新（或更新）的记录。根据“下一页”的逻辑，记录应该由页#11负责。然而：
 
-![页分裂2](D:\DOCS\PICS\页分裂2.jpg)
+![页分裂2](https://github.com/codzeroNov/MyNotes/tree/master/MySQL/PICS/页分裂2.jpg)
 
 页#11也同样满了，数据也不可能不按顺序地插入。怎么办？
 
@@ -106,12 +106,12 @@ B+树的索引可以分为聚集索引（clustered index）和辅助索引（sec
 + 移动行记录
 + 重新定义页之间的关系
 
-![页分裂3](D:\DOCS\PICS\页分裂3.jpg)
+![页分裂3](https://github.com/codzeroNov/MyNotes/tree/master/MySQL/PICS/页分裂3.jpg)
 
 
 新的页#12被创建：
 
-![页分裂4](D:\DOCS\PICS\页分裂4.jpg)
+![页分裂4](https://github.com/codzeroNov/MyNotes/tree/master/MySQL/PICS/页分裂4.jpg)
 
 页#11保持原样，只有页之间的关系发生了改变：
 
