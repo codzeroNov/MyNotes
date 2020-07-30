@@ -2,7 +2,7 @@
 
 从逻辑存储结构来看，InnoDB中所有的数据都被逻辑地存放在一个空间中，称之为表空间(tablespace)。表空间又由段(segment)、区(extent)、页(page)组成。页在一些文档中也称之为块(block)。
 
-![InnoDB逻辑存储结构](D:\DOCS\PICS\InnoDB逻辑存储结构.png)
+![InnoDB逻辑存储结构](https://github.com/codzeroNov/MyNotes/blob/master/MySQL/PICS/InnoDB%E9%80%BB%E8%BE%91%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.png)
 
 ### 表空间
 
