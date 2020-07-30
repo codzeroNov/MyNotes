@@ -106,12 +106,12 @@ B+树的索引可以分为聚集索引（clustered index）和辅助索引（sec
 + 移动行记录
 + 重新定义页之间的关系
 
-![页分裂3](https://github.com/codzeroNov/MyNotes/tree/master/MySQL/PICS/页分裂3.jpg)
+![页分裂3](https://github.com/codzeroNov/MyNotes/blob/master/MySQL/PICS/%E9%A1%B5%E5%88%86%E8%A3%823.jpg)
 
 
 新的页#12被创建：
 
-![页分裂4](https://github.com/codzeroNov/MyNotes/tree/master/MySQL/PICS/页分裂4.jpg)
+![页分裂4](https://github.com/codzeroNov/MyNotes/blob/master/MySQL/PICS/%E9%A1%B5%E5%88%86%E8%A3%824.jpg)
 
 页#11保持原样，只有页之间的关系发生了改变：
 
