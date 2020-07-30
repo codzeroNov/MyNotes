@@ -126,7 +126,7 @@ undo log 的创建
 
 在执行查询SQL时，会生成一致性视图read-view，InnoDB 为每个事务构造了一个数组，用来保存这个事务启动瞬间，当前正处于启动了但还没提交的所有事务ID。数组里面事务 ID 的最小值记为低水位（min_id），当前系统里面已经创建过的事务 ID 的最大值加1记为高水位（max_id）。
 
-![watermarks of transation](D:\DOCS\PICS\watermarks of transation.png)
+![watermarks of transation](https://github.com/codzeroNov/MyNotes/blob/master/MySQL/PICS/watermarks%20of%20transation.png)
 
 这个视图数组和高水位，就组成了当前事务的一致性视图（read-view），而数据版本的可见性规则，就是基于数据行trx_id 和这个一致性视图的对比结果得到的。这个视图数组把所有的行的trx_id 分成了几种不同的情况:
 
