@@ -56,7 +56,7 @@
 >
 > 5. 执行器调用引擎的提交事务接口，引擎把刚刚写入的 redo log 改成提交（commit）状态，更新完成。
 >
-> 
+> ![binlog redolog 2pc](https://github.com/codzeroNov/MyNotes/blob/master/MySQL/PICS/binlog%20redo%202pc.png)
 
 #### undo log
 
@@ -101,7 +101,7 @@
 
 在分析MVCC原理之前，先看下InnoDB中数据行的结构：
 
-![structure of rows in innodb](D:\DOCS\PICS\structure of rows in innodb.webp)
+![structure of rows in innodb](https://github.com/codzeroNov/MyNotes/blob/master/MySQL/PICS/structure%20of%20rows%20in%20innodb.webp)
 
 在InnoDB中，每一行都有2个隐藏列DATA_TRX_ID和DATA_ROLL_PTR(如果没有定义主键，则还有个隐藏主键列)：
 
@@ -120,13 +120,13 @@ undo log 在 Rollback segment中又被细分为 insert 和 update undo log ，in
 undo log 的创建
 每次对数据进行更新操作时，都会copy当前数据，保存到undo log 中。并修改当前行的回滚指针指向undo log中的旧数据行。
 
-![version list of innodb](D:\DOCS\PICS\version list of innodb.webp)
+![version list of innodb](https://github.com/codzeroNov/MyNotes/blob/master/MySQL/PICS/version%20list%20of%20innodb.webp)
 
 #### 事务匹配原理
 
 在执行查询SQL时，会生成一致性视图read-view，InnoDB 为每个事务构造了一个数组，用来保存这个事务启动瞬间，当前正处于启动了但还没提交的所有事务ID。数组里面事务 ID 的最小值记为低水位（min_id），当前系统里面已经创建过的事务 ID 的最大值加1记为高水位（max_id）。
 
-![watermarks of transation](D:\DOCS\PICS\watermarks of transation.png)
+![watermarks of transation](https://github.com/codzeroNov/MyNotes/blob/master/MySQL/PICS/watermarks%20of%20transation.png)
 
 这个视图数组和高水位，就组成了当前事务的一致性视图（read-view），而数据版本的可见性规则，就是基于数据行trx_id 和这个一致性视图的对比结果得到的。这个视图数组把所有的行的trx_id 分成了几种不同的情况:
 
