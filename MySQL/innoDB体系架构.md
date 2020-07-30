@@ -8,7 +8,7 @@ InnoDB存储引擎有多个内存块，他们组成一个大的内存池，负�
 + 缓存磁盘上的数据，方便快速地读取，同时在对磁盘文件的数据修改前在此缓存。
 + redolog的缓冲。
 
-![innoDB引擎储存架构](D:\DOCS\PICS\innoDB引擎储存架构.png)
+![innoDB引擎储存架构](https://github.com/codzeroNov/MyNotes/blob/master/MySQL/PICS/innoDB%E5%BC%95%E6%93%8E%E5%82%A8%E5%AD%98%E6%9E%B6%E6%9E%84.png)
 
 后台线程：
 
@@ -23,7 +23,7 @@ InnoDB存储引擎有多个内存块，他们组成一个大的内存池，负�
 
 缓冲池简单来说就是一块内存区域，通过内存的速度来弥补磁盘速度较慢对数据库的影响。
 
-![innoDB中的内存对象](D:\DOCS\PICS\innoDB中的内存对象.png)
+![innoDB中的内存对象](https://github.com/codzeroNov/MyNotes/blob/master/MySQL/PICS/innoDB%E4%B8%AD%E7%9A%84%E5%86%85%E5%AD%98%E5%AF%B9%E8%B1%A1.png)
 
 ##### LRU List，FREE List和Flush List
 
@@ -105,7 +105,7 @@ Change Buffer的对象依然是非唯一索引页。
 >
 > 因此，存在IO写入导致page损坏的风险：
 >
-> ![InnoDB部分写失效](D:\DOCS\PICS\InnoDB部分写失效.png)
+> ![InnoDB部分写失效](https://github.com/codzeroNov/MyNotes/blob/master/MySQL/PICS/InnoDB%E9%83%A8%E5%88%86%E5%86%99%E5%A4%B1%E6%95%88.png)
 
 doublewrite由两部分组成，一部分为内存中的doublewrite buffer，其大小为2MB，另一部分是磁盘上共享表空间(ibdata x)中连续的128个页，即2个区(extent)，大小也是2MB。
 
@@ -115,7 +115,7 @@ doublewrite由两部分组成，一部分为内存中的doublewrite buffer，其
 
 3. 待第二步完成后，再将doublewrite buffer中的脏页数据写入实际的各个表空间文件(离散写)；(脏页数据固化后，即进行标记对应doublewrite数据可覆盖)
 
-![两次写过程](D:\DOCS\PICS\两次写过程.png)
+![两次写过程](https://github.com/codzeroNov/MyNotes/blob/master/MySQL/PICS/%E4%B8%A4%E6%AC%A1%E5%86%99%E8%BF%87%E7%A8%8B.png)
 
 **两次写的崩溃回复**
 
