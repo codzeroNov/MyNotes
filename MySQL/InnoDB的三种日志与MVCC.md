@@ -56,7 +56,7 @@
 >
 > 5. 执行器调用引擎的提交事务接口，引擎把刚刚写入的 redo log 改成提交（commit）状态，更新完成。
 >
-> 
+> ![binlog redolog 2pc](https://github.com/codzeroNov/MyNotes/blob/master/MySQL/PICS/binlog%20redo%202pc.png)
 
 #### undo log
 
@@ -101,7 +101,7 @@
 
 在分析MVCC原理之前，先看下InnoDB中数据行的结构：
 
-![structure of rows in innodb](D:\DOCS\PICS\structure of rows in innodb.webp)
+![structure of rows in innodb](https://github.com/codzeroNov/MyNotes/blob/master/MySQL/PICS/structure%20of%20rows%20in%20innodb.png)
 
 在InnoDB中，每一行都有2个隐藏列DATA_TRX_ID和DATA_ROLL_PTR(如果没有定义主键，则还有个隐藏主键列)：
 
@@ -120,7 +120,7 @@ undo log 在 Rollback segment中又被细分为 insert 和 update undo log ，in
 undo log 的创建
 每次对数据进行更新操作时，都会copy当前数据，保存到undo log 中。并修改当前行的回滚指针指向undo log中的旧数据行。
 
-![version list of innodb](D:\DOCS\PICS\version list of innodb.webp)
+![version list of innodb](https://github.com/codzeroNov/MyNotes/blob/master/MySQL/PICS/version%20list%20of%20innodb.webp)
 
 #### 事务匹配原理
 
