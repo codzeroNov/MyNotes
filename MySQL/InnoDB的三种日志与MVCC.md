@@ -101,7 +101,7 @@
 
 在分析MVCC原理之前，先看下InnoDB中数据行的结构：
 
-![structure of rows in innodb](https://github.com/codzeroNov/MyNotes/blob/master/MySQL/PICS/structure%20of%20rows%20in%20innodb.png)
+![structure of rows in innodb](https://github.com/codzeroNov/MyNotes/blob/master/MySQL/PICS/structure%20of%20rows%20in%20innodb.webp)
 
 在InnoDB中，每一行都有2个隐藏列DATA_TRX_ID和DATA_ROLL_PTR(如果没有定义主键，则还有个隐藏主键列)：
 
