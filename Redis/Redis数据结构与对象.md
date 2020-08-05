@@ -222,7 +222,7 @@ typedef struct intset {
 | INTSET_ENC_INT32 | int32_t |  4   |
 | INTSET_ENC_INT64 | int64_t |  8   |
 
-![](D:\DOCS\REDIS\一个包含5个int16类型的整数集合.png)
+![一个包含5个int16类型的整数集合](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E4%B8%80%E4%B8%AA%E5%8C%85%E5%90%AB5%E4%B8%AAint16%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%95%B4%E6%95%B0%E9%9B%86%E5%90%88.png)
 
 #### 升级
 
@@ -244,7 +244,7 @@ typedef struct intset {
 
 压缩链表的组成如下：
 
-![压缩链表的各个组成部分](D:\DOCS\REDIS\压缩链表的各个组成部分.png)
+![压缩链表的各个组成部分](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E5%8E%8B%E7%BC%A9%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%84%E4%B8%AA%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86.png)
 
 各个部分的详细说明：
 
@@ -258,7 +258,7 @@ typedef struct intset {
 
 压缩列表的节点构成如下：
 
-![entry结构](D:\DOCS\REDIS\entry结构.png)
+![entry结构](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/entry%E7%BB%93%E6%9E%84.png)
 
 + previous_entry_length：以字节为单位，记录前一节点的长度。方便根据当前地址，计算前一个节点的地址。
 + encoding：记录了节点的content属性所保存数据的类型及长度。
@@ -268,7 +268,7 @@ typedef struct intset {
 
 由于previoud_entry_length保存的是前一个节点的长度。假如在这个列表里面存了n个长度在250-253字节之间的节点（就是说这些节点的previous_entry_length的长度都为1字节）。此时，如果在表头新增一个长度大于等于254字节的新节点。如图：
 
-![包含e1至eN节点的压缩列表](D:\DOCS\REDIS\包含e1至eN节点的压缩列表.png)
+![包含e1至eN节点的压缩列表](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E5%8C%85%E5%90%ABe1%E8%87%B3eN%E8%8A%82%E7%82%B9%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8.png)
 
 因为e1的previoud_entry_length长度为1字节，不能记录上一个节点的长度了，则需要扩容成5字节。此时e2的previoud_entry_length也需要改了，然后e3，e4...
 
@@ -335,7 +335,7 @@ encoding记录了对象的编码，而每种对象类型又都至少使用了两
 
 字符串对象的编码可以是int、raw、embstr。
 
-![raw编码的字符串对象](D:\DOCS\REDIS\raw编码的字符串对象.png)
+![raw编码的字符串对象](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/raw%E7%BC%96%E7%A0%81%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AF%B9%E8%B1%A1.png)
 
 **编码转换**
 
@@ -353,11 +353,11 @@ encoding记录了对象的编码，而每种对象类型又都至少使用了两
 
 ziplist编码如下：
 
-![ziplist编码的列表对象](D:\DOCS\REDIS\ziplist编码的列表对象.png)
+![ziplist编码的列表对象](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/ziplist%E7%BC%96%E7%A0%81%E7%9A%84%E5%88%97%E8%A1%A8%E5%AF%B9%E8%B1%A1.png)
 
 linkedlist编码如下：
 
-![linkedlist编码的列表对象](D:\DOCS\REDIS\linkedlist编码的列表对象.png)
+![linkedlist编码的列表对象](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/linkedlist%E7%BC%96%E7%A0%81%E7%9A%84%E5%88%97%E8%A1%A8%E5%AF%B9%E8%B1%A1.png)
 
 **编码转换**
 
@@ -374,11 +374,11 @@ linkedlist编码如下：
 
 ziplist编码如下：
 
-![](D:\DOCS\REDIS\ziplist编码的哈希对象.png)
+![ziplist编码的哈希对象](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/ziplist%E7%BC%96%E7%A0%81%E7%9A%84%E5%93%88%E5%B8%8C%E5%AF%B9%E8%B1%A1.png)
 
 hashtable编码的哈希对象：
 
-![hashtable编码的哈希对象](D:\DOCS\REDIS\hashtable编码的哈希对象.png)
+![hashtable编码的哈希对象](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/hashtable%E7%BC%96%E7%A0%81%E7%9A%84%E5%93%88%E5%B8%8C%E5%AF%B9%E8%B1%A1.png)
 
 当**使用ziplist编码**时，每当有新的键值对加入哈希对象，会先将key压入列表表尾，然后将value压入列表表尾。因此：
 
@@ -404,11 +404,11 @@ hashtable编码的哈希对象：
 
 intset编码的集合对象：
 
-![intset编码的集合对象](D:\DOCS\REDIS\intset编码的集合对象.png)
+![intset编码的集合对象](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/intset%E7%BC%96%E7%A0%81%E7%9A%84%E9%9B%86%E5%90%88%E5%AF%B9%E8%B1%A1.png)
 
 hashtable编码的集合对象：
 
-![hashtable编码的集合对象](D:\DOCS\REDIS\hashtable编码的集合对象.png)
+![hashtable编码的集合对象](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/hashtable%E7%BC%96%E7%A0%81%E7%9A%84%E9%9B%86%E5%90%88%E5%AF%B9%E8%B1%A1.png)
 
 **编码转换**
 
@@ -434,7 +434,7 @@ typedef struct zset {
 } zset;
 ```
 
-![skiplist编码的有序集合](D:\DOCS\REDIS\skiplist编码的有序集合.png)
+![skiplist编码的有序集合](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/skiplist%E7%BC%96%E7%A0%81%E7%9A%84%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88.png)
 
 即维护了一个跳跃表，也维护了一个字典映射。这个字典的键是保存了元素的成员，而字典的值保存了元素的分值。这样通过元素就能快速找到该元素的分支（时间复杂度O(1)）。
 
