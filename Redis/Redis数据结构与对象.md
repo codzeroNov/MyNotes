@@ -6,7 +6,7 @@ redis里面的字符串是由自定义的结构（Simple Dynamic String）表示
 
 #### SDS的结构
 
-![带有未使用空间的SDS](D:\DOCS\REDIS\带有未使用空间的SDS.png)
+![带有未使用空间的SDS](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E5%B8%A6%E6%9C%89%E6%9C%AA%E4%BD%BF%E7%94%A8%E7%A9%BA%E9%97%B4%E7%9A%84SDS.png)
 
 ```c
 struct sdshdr {
@@ -34,13 +34,13 @@ struct sdshdr {
 
 空间预分配： 
 
-> &#8195;&#8195;1.字符串修改后大小在1M以内。修改后大小的两倍扩容+1byte。如：13(len)+13(free)+1(空格)。
+> 1.字符串修改后大小在1M以内。修改后大小的两倍扩容+1byte。如：13(len)+13(free)+1(空格)。
 >
-> &#8195;&#8195;2.字符串修改后大小在1M及以上。修改后+1M+1byte。如：32M+1MB+1byte。
+> 2.字符串修改后大小在1M及以上。修改后+1M+1byte。如：32M+1MB+1byte。
 
 惰性空间释放：
 
-> &#8195;&#8195;缩小字符串时不会减少buf数组大小，只会增加free的值，空间不会真的被回收。但是提供API，可以在需要的时候真正释放空间，所以不用担心会空间浪费。
+> 缩小字符串时不会减少buf数组大小，只会增加free的值，空间不会真的被回收。但是提供API，可以在需要的时候真正释放空间，所以不用担心会空间浪费。
 
 ## 链表
 
@@ -83,7 +83,7 @@ typedef struct list {
 } list;
 ```
 
-![由list和listNode构成的链表](D:\DOCS\REDIS\由list和listNode构成的链表.png)
+![由list和listNode构成的链表](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E7%94%B1list%E5%92%8ClistNode%E6%9E%84%E6%88%90%E7%9A%84%E9%93%BE%E8%A1%A8.png)
 
 其实和不使用c自带的String一个道理，这样简单封装一下，对一些操作的时间复杂度能大大降低。比如查链表长度操作，而三个自定义函数算是为了满足用户的定制化需求。
 
@@ -99,7 +99,7 @@ redis的数据库就是使用字典来作为底层实现的，对数据库的增
 
 使用hash表作为底层实现原理。（注意，hash只是字典的一种实现方式，别搞混了）
 
-![普通状态下的字典](D:\DOCS\REDIS\普通状态下的字典.png)
+![普通状态下的字典](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E6%99%AE%E9%80%9A%E7%8A%B6%E6%80%81%E4%B8%8B%E7%9A%84%E5%AD%97%E5%85%B8.png)
 
 #### 哈希算法
 
@@ -143,7 +143,7 @@ redis的数据库就是使用字典来作为底层实现的，对数据库的增
 
 >  注：由于在渐进式rehash的过程中，同时使用ht[0]和ht[1]两个哈希表，所以在渐进式rehash过程中，增只会在ht[1]进行，查删改会在ht[0]和ht[1]中进行
 
-&#8195;&#8195;问题：所以，redis的hash是有序还是无序的？
+问题：所以，redis的hash是有序还是无序的？
 
 > Redis 的 Hash 是使用 ziplist 进行存储的，当超出一定限制后，再改为一般的 hash 进行存储。ziplist 是一个双向链表，所以是顺序的，一般hash不保证顺序，使用ziplist是为了节约内存
 
@@ -153,7 +153,7 @@ redis的数据库就是使用字典来作为底层实现的，对数据库的增
 
 #### 跳跃表的实现
 
-![一个跳跃表](D:\DOCS\REDIS\一个跳跃表.png)
+![一个跳跃表](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E4%B8%80%E4%B8%AA%E8%B7%B3%E8%B7%83%E8%A1%A8.png)
 
 代码结构：(redis.h)
 
