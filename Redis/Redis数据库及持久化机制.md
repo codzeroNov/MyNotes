@@ -227,3 +227,4 @@ flushAppendOnlyFile函数的行为由appendfsync选项的值来定：
 2. 子进程完成AOF重写工作之后，向父进程发送一个信号。
 3. 父进程收到信号，执行信号处理函数。将AOf重写缓冲区的内容追加到新的AOF文件中。
 4. 对新的AOF文件进行改名，原子地（atomic）覆盖现有的AOF文件，完成新旧文件替换。
+![服务器同时将命令发给AOF文件和重写缓冲区](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%8C%E6%97%B6%E5%B0%86%E5%91%BD%E4%BB%A4%E5%8F%91%E7%BB%99AOF%E6%96%87%E4%BB%B6%E5%92%8C%E9%87%8D%E5%86%99%E7%BC%93%E5%86%B2%E5%8C%BA.png)
