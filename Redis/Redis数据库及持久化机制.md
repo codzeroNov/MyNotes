@@ -78,7 +78,7 @@ typedef struct redisDb {
 
 过期字典的键是一个指针，指向键空间中的某个键对象（省空间）。值为一个long long类型的整数，保存了过期时间。（毫秒精度的unix时间戳）
 
-![带有过期字典的数据库键例子](D:\DOCS\REDIS\PICS\带有过期字典的数据库键例子.png)
+![带有过期字典的数据库键例子](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E5%B8%A6%E6%9C%89%E8%BF%87%E6%9C%9F%E5%AD%97%E5%85%B8%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E9%94%AE%E4%BE%8B%E5%AD%90.png)
 
 #### 过期键删除策略
 
@@ -207,7 +207,7 @@ flushAppendOnlyFile函数的行为由appendfsync选项的值来定：
 3. 使用伪客户端执行被读出的写命令。
 4. 重复上两步，直到所有命令被处理完毕。
 
-![AOF文件的载入](D:\DOCS\REDIS\PICS\AOF文件的载入.png)
+![AOF文件的载入](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/AOF%E6%96%87%E4%BB%B6%E7%9A%84%E8%BD%BD%E5%85%A5.png)
 
 #### AOF的重写
 
