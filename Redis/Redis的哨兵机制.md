@@ -79,7 +79,7 @@ Sentinel通过命令连接向服务器的sentinel:hello频道发送信息，又�
 
 对于监视同一个服务器的多个Sentine，一个Sentinel发送的信息会被其他Sentinel接收到。
 
-![Sentinel向服务器发送信息](D:\DOCS\REDIS\PICS\Sentinel向服务器发送信息.png)
+![Sentinel向服务器发送信息](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/Sentinel%E5%90%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%91%E9%80%81%E4%BF%A1%E6%81%AF.png)
 
 ## 更新Sentinel字典
 
@@ -91,7 +91,7 @@ Sentinel通过命令连接向服务器的sentinel:hello频道发送信息，又�
 
 当Sentinel通过频道信息发现一个新的Sentinel时，它不仅会为新的Sentinel在sentins字典中创建相应的实例结构，还会创建一个连向新Sentinel的命令连接，而新Sentinel也会创建连向这个Sentinel的命令连接。
 
-![各个Sentinel之间的网络连接](D:\DOCS\REDIS\PICS\各个Sentinel之间的网络连接.png)
+![各个Sentinel之间的网络连接](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E5%90%84%E4%B8%AASentinel%E4%B9%8B%E9%97%B4%E7%9A%84%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5.png)
 
 ## 主观检测下线状态
 
