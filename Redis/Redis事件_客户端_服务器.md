@@ -12,11 +12,11 @@ Redis通过Reactor模式开发了自己的网络事件处理器——文件事�
 + 文件事件处理器通过I/O多路复用（multiplexing）来同时监听多个套接字，并根据套接字目前执行的任务来为套接字关联不同的事件处理器。
 + 当被监听的套接字准备好应答（accept）、读取（read）、写入（write）、关闭（close）等操作时，与之对应的文件事件便会产生，这时文件事件处理器就会调用套接字之前的关联好的事件处理器来处理这些文件。
 
-![文件事件处理器的组成部分](D:\DOCS\REDIS\PICS\文件事件处理器的组成部分.png)
+![文件事件处理器的组成部分](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E6%96%87%E4%BB%B6%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%99%A8%E7%9A%84%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86.png)
 
 I/O多路复用总是会将所有产生事件的套接字都放到一个队列里，然后通过这个队列，以有序、同步、每次一个套接字的方式向文件事件分派器传送套接字。
 
-![通过队列传送套接字](D:\DOCS\REDIS\PICS\通过队列传送套接字.png)
+![通过队列传送套接字](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E9%80%9A%E8%BF%87%E9%98%9F%E5%88%97%E4%BC%A0%E9%80%81%E5%A5%97%E6%8E%A5%E5%AD%97.png)
 
 Redis的I/O多路复用程序的所有功能都是通过包装常见的select、epoll、evport和kqueue这些I/O多路复用函数库来实现的。
 
