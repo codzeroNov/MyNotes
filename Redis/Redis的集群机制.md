@@ -8,7 +8,7 @@ Redis集群是Redis提供的分布式数据库方法，集群通过分片（shar
 
 一个节点就是一个运行在集群模式下的Redis服务器，Redis服务器在启动时根据cluster-enabled配置选项是否为yes来决定是否开启服务器的集群模式。
 
-![判断是否开启集群模式](D:\DOCS\REDIS\PICS\判断是否开启集群模式.png)
+![判断是否开启集群模式](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%BC%80%E5%90%AF%E9%9B%86%E7%BE%A4%E6%A8%A1%E5%BC%8F.png)
 
 #### 集群的数据结构
 
@@ -100,13 +100,13 @@ typedef struct clusterState {
 
 下图表示7000节点视角的clusterState结构：
 
-![7000节点视角的clusterState结构](D:\DOCS\REDIS\PICS\7000节点视角的clusterState结构.png)
+![7000节点视角的clusterState结构](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/7000%E8%8A%82%E7%82%B9%E8%A7%86%E8%A7%92%E7%9A%84clusterState%E7%BB%93%E6%9E%84.png)
 
 #### CLUSTER MEET命令的实现
 
 通过向节点A发送CLUSTER MEET命令，客户端可以让接收命令的节点A将另一个节点B添加到节点A当前所在的集群里：`CLUSTER MEET <ip> <port>`
 
-![节点的握手过程](D:\DOCS\REDIS\PICS\节点的握手过程.png)
+![节点的握手过程](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E8%8A%82%E7%82%B9%E7%9A%84%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B.png)
 
 之后，节点A会将节点B的信息通过Gossip协议传播给集群中的其他节点，让其他节点与节点B进行握手。
 
@@ -154,7 +154,7 @@ typedef struct clusterState {
 }
 ```
 
-![slots数组](D:\DOCS\REDIS\PICS\slots数组.png)
+![slots数组](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/slots%E6%95%B0%E7%BB%84.png)
 
 clusterNode.slots用来记录节点负责哪些槽；clusterState.slots用来记录每个槽是哪些节点负责。这么做是为了加速定位。
 
@@ -162,7 +162,7 @@ clusterNode.slots用来记录节点负责哪些槽；clusterState.slots用来记
 
 CLUSTER ADDSLOTS命令接受一个或多个槽作为参数，并将所有输入的槽指派给接收该命令的节点负责。
 
-![节点的CLUSTER STATE结构](D:\DOCS\REDIS\PICS\节点的CLUSTER STATE结构.png)
+![节点的CLUSTER STATE结构](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E8%8A%82%E7%82%B9%E7%9A%84CLUSTER%20STATE%E7%BB%93%E6%9E%84.png)
 
 ## 在集群中执行命令
 
@@ -173,7 +173,7 @@ CLUSTER ADDSLOTS命令接受一个或多个槽作为参数，并将所有输入�
 1. 若该槽指派给自己，则执行命令。
 2. 槽没有指派给当前节点，则返回MOVED错误并重定向（redirect）到正确的节点。
 
-![判断客户端是否需要转向的流程](D:\DOCS\REDIS\PICS\判断客户端是否需要转向的流程.png)
+![判断客户端是否需要转向的流程](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E5%88%A4%E6%96%AD%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E8%BD%AC%E5%90%91%E7%9A%84%E6%B5%81%E7%A8%8B.png)
 
 #### 节点数据库的实现
 
@@ -191,7 +191,7 @@ typedef struct clusterState {
 
 跳跃表的每个分值（score）都是一个槽号，每个节点的成员（member）都是一个数据库键：
 
-![slots_to_keys跳跃表](D:\DOCS\REDIS\PICS\slots_to_keys跳跃表.png)
+![slots_to_keys跳跃表](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/slots_to_keys%E8%B7%B3%E8%B7%83%E8%A1%A8.png)
 
 ## 重新分片
 
@@ -215,7 +215,7 @@ redis-trib负责集群的重新分片操作。
 
 键迁移过程：
 
-![迁移键的过程](D:\DOCS\REDIS\PICS\迁移键的过程.png)
+![迁移键的过程](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E8%BF%81%E7%A7%BB%E9%94%AE%E7%9A%84%E8%BF%87%E7%A8%8B.png)
 
 槽重新分片过程：
 

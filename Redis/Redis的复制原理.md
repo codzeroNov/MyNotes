@@ -55,13 +55,13 @@ PSYNC代替了SYNC。PSYNC命令具有完整重同步（full resynchronization�
 
 **服务运行ID**：每个Redis服务器都有自己的运行ID。
 
-![主服务器向从服务器和复制积压缓冲区写数据](D:\DOCS\REDIS\PICS\主服务器向从服务器和复制积压缓冲区写数据.png)
+![主服务器向从服务器和复制积压缓冲区写数据](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E4%B8%BB%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%91%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E5%A4%8D%E5%88%B6%E7%A7%AF%E5%8E%8B%E7%BC%93%E5%86%B2%E5%8C%BA%E5%86%99%E6%95%B0%E6%8D%AE.png)
 
 当从服务器连上主服务器时，从服务器会将自身的复制偏移量通过PSYNC发给主服务器。主服务器检查复制积压缓冲区，若偏移量之后的数据在复制积压缓冲区之中，则执行部分重同步。否则执行完整重同步。
 
 #### PSYNC的实现
 
-![PSYNC执行时可能遇到的情况](D:\DOCS\REDIS\PICS\PSYNC执行时可能遇到的情况.png)
+![PSYNC执行时可能遇到的情况](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/PSYNC%E6%89%A7%E8%A1%8C%E6%97%B6%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E7%9A%84%E6%83%85%E5%86%B5.png)
 
 #### 复制的实现
 
