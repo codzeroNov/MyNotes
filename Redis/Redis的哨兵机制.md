@@ -1,12 +1,12 @@
 哨兵是Redis的高可用性解决方案：由一个或多个Sentinel实例组成Sentinel系统，可以监视任意多个主服务器，以及这些主服务器的属下的从服务器，并在被监视的主服务器下线时，自动将下线的主服务器属下的某个从服务器升级为新的主服务器。
 
-![服务器和Sentinel系统](D:\DOCS\REDIS\PICS\服务器和Sentinel系统.png)
+![服务器和Sentinel系统](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8CSentinel%E7%B3%BB%E7%BB%9F.png)
 
-![主服务器下线](D:\DOCS\REDIS\PICS\主服务器下线.png)
+![主服务器下线](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E4%B8%BB%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E7%BA%BF.png)
 
-![故障转移](D:\DOCS\REDIS\PICS\故障转移.png)
+![故障转移](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E6%95%85%E9%9A%9C%E8%BD%AC%E7%A7%BB.png)
 
-![原主服务器降级](D:\DOCS\REDIS\PICS\原主服务器降级.png)
+![原主服务器降级](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E5%8E%9F%E4%B8%BB%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%99%8D%E7%BA%A7.png)
 
 ## 启动并初始化Sentinel
 
