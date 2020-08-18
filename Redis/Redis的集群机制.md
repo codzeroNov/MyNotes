@@ -219,7 +219,7 @@ redis-trib负责集群的重新分片操作。
 
 槽重新分片过程：
 
-![对槽进行重新分片的过程](D:\DOCS\REDIS\PICS\对槽进行重新分片的过程.png)
+![对槽进行重新分片的过程](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E5%AF%B9%E6%A7%BD%E8%BF%9B%E8%A1%8C%E9%87%8D%E6%96%B0%E5%88%86%E7%89%87%E7%9A%84%E8%BF%87%E7%A8%8B.png)
 
 ## ASK错误
 
@@ -230,7 +230,7 @@ redis-trib负责集群的重新分片操作。
 + 源节点会先在自己的数据库里面查找指定的键，如存在则执行客户端命令。
 + 如未找到，则源节点向客户端返回ASK错误，指引客户端转向正在导入槽的目标节点，并再次发送之前想要执行的命令。
 
-![判断是否发送ASK错误的过程](D:\DOCS\REDIS\PICS\判断是否发送ASK错误的过程.png)
+![判断是否发送ASK错误的过程](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%8F%91%E9%80%81ASK%E9%94%99%E8%AF%AF%E7%9A%84%E8%BF%87%E7%A8%8B.png)
 
 > 与MOVED错误类似，集群模式下的客户端接到ASK错误时也不会打印，而是自动根据错误提供的IP地址和端口进行转向操作。
 >
@@ -264,7 +264,7 @@ struct clusterNode {
 
 当一个主节点A通过消息得知主节点B认为主节点C进入了疑似下线状态时，主节点A会在自己的clusterState.nodes字典中找到主节点C所对应的clusterNode结构，并将主节点B的下线报告（failure report）添加到clusterNode结构的fail_reports链表里。
 
-![节点7000的下线报告](D:\DOCS\REDIS\PICS\节点7000的下线报告.png)
+![节点7000的下线报告](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/7000%E8%8A%82%E7%82%B9%E8%A7%86%E8%A7%92%E7%9A%84clusterState%E7%BB%93%E6%9E%84.png)
 
 如果在一个集群里，半数以上的主节点都将某个主节点x报告为疑似下线，那么这个节点x将被标记为已下线（FAIL），然后向集群广播一条关于节点x已下线的FAIL消息，所有收到该消息的节点都会立即标注x为已下线。
 
@@ -438,7 +438,7 @@ typedef struct {
 
 向集群中某个节点发送`PUBLISH <channel> <message>`将导致集群中所有节点都向channel频道发送message消息。
 
-![PUBLISH消息广播](D:\DOCS\REDIS\PICS\PUBLISH消息广播.png)
+![PUBLISH消息广播](https://github.com/codzeroNov/MyNotes/blob/master/Redis/PICS/PUBLISH%E6%B6%88%E6%81%AF%E5%B9%BF%E6%92%AD.png)
 
 > Q：为什么不直接向节点广播PUBLISH命令？
 >
