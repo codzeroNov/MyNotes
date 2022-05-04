@@ -15,7 +15,11 @@
 
 - Redundant Array of Independent Disks (expanding the acronym is not important - candidate should intuitively know what RAID is)
 - Two main ideas: mirroring and striping. Mirroring gives protection against drive failure and striping gives performance. This is the gist
-  What is a transaction?
-  Candidate does not necessarily need to define ACID (Atomicity, Consistency, Isolation, Durability) but should intuitively know what it means to provide transactional semantics in a concurrent, multi-threaded environment. Should at least describe atomicity and isolation.
-  Stack vs Heap (frequently asked 5%)
-  Stack is for a thread/program to allocate local program variables. Heap is for dynamic allocation of memory.  Stack memory is allocated at compile time. Heap memory is allocated at runtime.
+
+# What is a transaction?
+
+- Candidate does not necessarily need to define ACID (Atomicity, Consistency, Isolation, Durability) but should intuitively know what it means to provide transactional semantics in a concurrent, multi-threaded environment. Should at least describe atomicity and isolation.
+
+# Stack vs Heap (frequently asked 5%)
+
+- Stack is for a thread/program to allocate local program variables. Heap is for dynamic allocation of memory.  Stack memory is allocated at compile time. Heap memory is allocated at runtime.
